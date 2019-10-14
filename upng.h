@@ -25,26 +25,22 @@ freely, subject to the following restrictions:
 */
 
 
-#ifndef IMAGE_PNG_H
-	#define IMAGE_PNG_H
+#ifndef UPNG_H
+	#define UPNG_H
 	#include <Arduino.h>
 	#include <FS.h>
 	#include "SPIFFS.h"
 
-
-//	#if !defined(UPNG_H)
-//		#define UPNG_H
-
 		struct upng_s_rgb16b{
-			int r:5;//5;//6;
+			int r:5;
 			int g:6;
-			int b:5;//5;//6;
+			int b:5;
 			int null : 16;
 		};
 		struct upng_s_rgb18b{
-			int r:6;//5;//6;
+			int r:6;
 			int g:6;
-			int b:6;//5;//6;
+			int b:6;
 			int null:14;
 		};
 		struct upng_s_rgb24b{

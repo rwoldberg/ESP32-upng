@@ -24,11 +24,6 @@ freely, subject to the following restrictions:
 		distribution.
 */
 
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
-//#include <limits.h>
-
 #include "upng.h"
 
 #define MAKE_BYTE(b) ((b) & 0xFF)
@@ -905,6 +900,7 @@ static upng_format determine_format(upng_t* upng) {
 	}
 }
 
+/* free memory spent by source */
 static void upng_free_source(upng_t* upng)
 {
 	if (upng->source.owning != 0) {
@@ -1186,7 +1182,6 @@ upng_t* upng_new_from_file(const char *filename)
 {
 	upng_t* upng;
 	char *buffer;
-	//FILE *file;
 	File file;
 	long size;
 
@@ -1203,24 +1198,16 @@ upng_t* upng_new_from_file(const char *filename)
 	}
 
 	/* get filesize */
-	//fseek(file, 0, SEEK_END);
-	//file.seek(0,SeekEnd);
-	//size = ftell(file);
 	size = file.size(); //file.position();
-	//rewind(file);
-	//file.seek(0,SeekSet);
 
 	/* read contents of the file into the vector */
 	buffer = (char *)malloc((unsigned long)size);
 	if (buffer == NULL) {
-		//fclose(file);
 		file.close();
 		SET_ERROR(upng, UPNG_ENOMEM);
 		return upng;
 	}
-	//fread(buffer, 1, (unsigned long)size, file);
 	file.readBytes(buffer,(size_t)size);
-	//fclose(file);
 	file.close();
 
 	/* set the read buffer as our source buffer, with owning flag set */
