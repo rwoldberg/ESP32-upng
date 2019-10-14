@@ -1,11 +1,15 @@
-uPNG -- derived from LodePNG version 20100808
+File need to be modified
+
+ESP_upng -- derived from LodePNG version 20100808
 ==========================================
 
 Copying
 -------
-
+upng:
 Copyright (c) 2005-2010 Lode Vandevenne
 Copyright (c) 2010 Sean Middleditch
+ESP32upng (port for ESP32):
+Copyright (c) 2019 Vitaliy Novoselov
 
 This software is provided 'as-is', without any express or implied
 warranty. In no event will the authors be held liable for any damages
@@ -29,11 +33,11 @@ freely, subject to the following restrictions:
 Features
 --------
 
-uPNG supports loading and decoding PNG images into a simple byte buffer, suitable
-for passing directly to OpenGL as texture data.
+ESP_upng supports loading and decoding PNG images into a simple byte buffer, suitable
+for [drawing on ESP32-supported screens (depends on TFT_eSPI)].
 
-uPNG does NOT support interlaced images, paletted images, and fixed-transparency.
-Checksums are NOT verified and corrupt image data may be undetected.
+ESP_upng does NOT support interlaced images, paletted images, and fixed-transparency.
+Checksums are NOT verified and corrupt image data may be undetected. Drawing enabled only for RGB for now.
 
 It DOES support RGB, RGBA, greyscale, and greyscale-with-alpha images.  RGB and
 RGBA are currently only supported in 8-bit color depths, and greyscale images
