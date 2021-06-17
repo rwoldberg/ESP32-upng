@@ -93,6 +93,45 @@ freely, subject to the following restrictions:
 			UPNG_PALLETTE8
 		} upng_format;
 
+		typedef enum upng_color {
+			UPNG_LUM		= 0,
+			UPNG_RGB		= 2,
+			UPNG_PAL		= 3,
+			UPNG_LUMA		= 4,
+			UPNG_RGBA		= 6
+		} upng_color;
+
+		typedef enum upng_state {
+			UPNG_ERROR		= -1,
+			UPNG_DECODED	= 0,
+			UPNG_HEADER		= 1,
+			UPNG_NEW		= 2
+		} upng_state;
+
+		typedef struct upng_source {
+			const unsigned char*	buffer;
+			unsigned long			size;
+			char					owning;
+		} upng_source;
+
+		struct upng_t {
+			unsigned		width;
+			unsigned		height;
+
+			upng_color		color_type;
+			unsigned		color_depth;
+			upng_format		format;
+
+			unsigned char*	buffer;
+			unsigned long	size;
+
+			upng_error		error;
+			unsigned		error_line;
+
+			upng_state		state;
+			upng_source		source;
+		};
+
 		typedef struct upng_t upng_t;
 
 		upng_t*		upng_new_from_bytes	(const unsigned char* buffer, unsigned long size);
